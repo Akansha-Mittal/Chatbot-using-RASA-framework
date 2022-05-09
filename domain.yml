@@ -1,0 +1,120 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - give_information
+  - buy_phone_laptop
+  - latest_news_phones_laptops
+  - ask_residence
+    # triggers: action_your_residence
+  - budget_available
+  - out_of_scope
+
+entities:
+  - category
+  - RAM
+  - battery
+  - camera
+  - budget 
+  
+slots:
+  category:
+    type: text
+  budget:
+    type: text
+  RAM:
+    type: text
+  battery:
+    type: text
+  camera:
+    type: text
+
+# forms:
+#   phone_features_form:
+#     required_slots:
+#       - RAM
+#       - battery
+#       - camera
+
+responses:
+  utter_how_can_I_help:
+  - text: "Welcome. I'm your shopping bot. I can help you with finding a phone or laptop and providing latest news for them!"
+  
+  utter_ask_RAM:
+  - text: "How much GB RAM are you looking for?"
+  
+  utter_ask_camera:
+  - text: "What megapixel camera are you looking for?"
+  
+  utter_ask_battery:
+  - text: "How much battery capacity are you looking for in the mobile?"
+
+  utter_ask_budget:
+  - text: "Please let me know your budget."
+  
+  utter_goodbye:
+  - text: "It was nice talking to you! Goodbye!"
+  
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_fallback:
+  - text: "Sorry! I couldn't get you!"
+    # buttons:
+    # - payload: '/buy_phone_laptop{{"category":"phone"}}'
+    #   title: "Buy Phone"
+    # - payload: '/buy_phone_laptop{{"category":"laptop"}}'
+    #   title: "Buy Laptop"
+    # - payload: '/latest_news_phones_laptops{{"category":"phone"}}'
+    #   title: "Mobile news"
+    # - payload: '/latest_news_phones_laptops{{"category":"laptop"}}'
+    #   title: "Laptop news"
+    # - payload: '/goodbye'
+    #   title: "Goodbye"
+
+  utter_residence:
+  - text: I live in this app all day long.
+  - text: The virtual world is my playground. I'm always here.
+  - text: Right here in this app. Whenever you need me.    
+
+actions:
+  - utter_how_can_I_help
+  - utter_ask_RAM
+  - utter_ask_camera
+  - utter_ask_battery
+  - utter_goodbye
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_iamabot
+  - utter_fallback
+  - action_search
+  - action_show_latest_news
+  - action_my_fallback
+  - action_your_residence
+  - utter_residence
+  - utter_ask_budget
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
