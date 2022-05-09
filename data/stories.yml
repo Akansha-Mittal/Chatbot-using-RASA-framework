@@ -1,0 +1,58 @@
+version: "2.0"
+
+stories:
+  
+- story: greet_+_show_phones
+  steps:
+  - intent: greet   
+  - action: utter_how_can_I_help
+  - intent: buy_phone_laptop
+    entities:
+    - category: "phone"
+  - action: utter_ask_RAM
+  - intent: give_information
+    entities:
+    - RAM: "4 GB"
+  - action: utter_ask_camera
+  - intent: give_information
+    entities: 
+    - camera: "40 megapixel"
+  - action: utter_ask_battery
+  - intent: give_information
+    entities:
+    - battery: "3000 mah"
+  - action: utter_ask_budget
+  - intent: budget_available
+    entities:
+    - budget: "400 rupees"
+  - action: action_search
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: greet_+_show_latest_news
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: latest_news_phones_laptops
+    entities: 
+    - category: "phone"
+  - action: action_show_latest_news
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: out_of_scope_intent
+  steps:
+  - intent: out_of_scope
+  - action: action_my_fallback
+
+- story: ask_residence_intent
+  steps:
+  - intent: ask_residence
+  - action: action_your_residence
+
+# rules:
+# - rule: Activate form
+#   steps:
+#   - intent: buy_phone_laptop
+#   - action: phone_features_form
+#   - active_loop: phone_features_form
